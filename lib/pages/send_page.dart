@@ -47,7 +47,7 @@ class _SendPageState extends State<SendPage> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 10, bottom: 10),
+                      padding: const EdgeInsets.only(top: 10, bottom: 20),
                       child: Text(
                         "어디로 보낼까요?",
                         style: TextStyle(fontSize: 15, color: Colors.blue),
@@ -88,8 +88,17 @@ class _SendPageState extends State<SendPage> {
                           style: TextStyle(fontSize: 15),
                         ),
                         onPressed: () {
-                          bankService.sendMoney(
-                              moneyValue: moneyValueController.text);
+                          print(double.parse(moneyValueController.text));
+                          service.sendMoney(
+                              moneyAmount:
+                                  double.parse(moneyValueController.text),
+                              onError: (errText) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(errText),
+                                  ),
+                                );
+                              });
                         },
                       ),
                     ),
