@@ -1,3 +1,4 @@
+import 'package:chang_mini/config/colors.dart';
 import 'package:chang_mini/services/bank_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +16,24 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Consumer<BankService>(
       builder: (context, service, child) {
-        return Scaffold();
+        return Scaffold(
+          appBar: AppBar(backgroundColor: TossColor.grey1, actions: [
+            Image.asset(
+              'assets/toss_appbar_icon_1.png',
+              height: 47,
+            ),
+            const SizedBox(width: 15),
+            Image.asset(
+              'assets/toss_appbar_icon_2.png',
+              height: 47,
+            ),
+            const SizedBox(width: 15),
+            Image.asset(
+              'assets/toss_appbar_icon_3.png',
+              height: 47,
+            ),
+          ]),
+        );
       },
     );
   }
